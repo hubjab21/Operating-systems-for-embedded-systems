@@ -1,0 +1,40 @@
+{
+	"folders": [
+		{
+			"path": "osfes_umlcpp_00_warmup"
+		},
+		{
+			"path": "osfes_umlcpp_01_classes"
+		},
+		{
+			"path": "osfes_umlcpp_02_namespaces"
+		},
+		{
+			"path": "osfes_umlcpp_03_constructors"
+		},
+		{
+			"path": "osfes_umlcpp_04_composition_and_aggregation"
+		},
+		{
+			"path": "osfes_umlcpp_05_references"
+		},
+		{
+			"path": "osfes_umlcpp_06_copy_constructor"
+		},
+		{
+			"path": "osfes_umlcpp_07_inheritance"
+		},
+		{
+			"path": "osfes_umlcpp_08_virtual_member_functions"
+		},
+		{
+			"path": "osfes_umlcpp_09_abstract_classes"
+		},
+		{
+			"path": "osfes_umlcpp_10_static_members"
+		}
+	],
+	"settings": {
+		"editor.formatOnSave": true
+	}
+}
