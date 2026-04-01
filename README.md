@@ -1,75 +1,75 @@
-# ⚙️ RTOS Abstraction Layer (C++ | FreeRTOS | RTX | Windows)
+# RTOS Abstraction Layer (C++ | FreeRTOS | RTX | Windows)
 
 A portable C++ abstraction layer for RTOS systems providing a unified API for threads and synchronization mechanisms across multiple platforms.
 
 ---
 
-## 🎯 Project Overview
+## Project Overview
 
 This project implements a **multi-platform RTOS abstraction layer**, allowing developers to write embedded applications independent of the underlying operating system.
 
 Supported platforms:
 
-* FreeRTOS
-* CMSIS-RTOS2 (RTX)
-* Windows (simulation / testing)
+- FreeRTOS
+- CMSIS-RTOS2 (RTX)
+- Windows (simulation / testing)
 
 The goal is to separate:
 
-* application logic
-* OS-specific implementation
+- application logic
+- OS-specific implementation
 
 ---
 
-## 🧠 Key Concepts
+## Key Concepts
 
-* RTOS abstraction layer
-* object-oriented design (OOP)
-* interface-based architecture
-* portability across platforms
-* embedded + desktop compatibility
+- RTOS abstraction layer
+- object-oriented design (OOP)
+- interface-based architecture
+- portability across platforms
+- embedded + desktop compatibility
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
-### 🔹 Interfaces (OS-independent)
+### Interfaces (OS-independent)
 
-* `ThreadInterface`
-* `MutexInterface`
+- `ThreadInterface`
+- `MutexInterface`
 
 Define a common API for all operating systems.
 
 ---
 
-### 🔹 Implementations
+### Implementations
 
-#### 🟢 FreeRTOS
+#### FreeRTOS
 
-* threads → `xTaskCreate`
-* mutex → `xSemaphoreCreateMutex`
-* tick → `xTaskGetTickCount`
-
----
-
-#### 🔵 RTX (CMSIS-RTOS2)
-
-* threads → `osThreadNew`
-* mutex → `osMutexAcquire`
-* tick → `osKernelGetTickCount`
+- threads → `xTaskCreate`
+- mutex → `xSemaphoreCreateMutex`
+- tick → `xTaskGetTickCount`
 
 ---
 
-#### 🟣 Windows (Simulation Layer)
+#### RTX (CMSIS-RTOS2)
 
-* threads → `CreateThread`
-* mutex → `CreateMutex`
-* synchronization → `WaitForSingleObject`
-* system time → `GetTickCount`
+- threads → `osThreadNew`
+- mutex → `osMutexAcquire`
+- tick → `osKernelGetTickCount`
 
 ---
 
-## 🔀 OS Selection
+#### Windows (Simulation Layer)
+
+- threads → `CreateThread`
+- mutex → `CreateMutex`
+- synchronization → `WaitForSingleObject`
+- system time → `GetTickCount`
+
+---
+
+## OS Selection
 
 ```cpp
 #define OSAPI_USE_FREERTOS
@@ -83,15 +83,15 @@ The correct backend is selected at compile time.
 
 ---
 
-## 🧵 Thread Abstraction
+## Thread Abstraction
 
 Provides a unified thread interface:
 
-* create / run thread
-* suspend / resume
-* joinable threads
-* priority control
-* stack usage monitoring
+- create / run thread
+- suspend / resume
+- joinable threads
+- priority control
+- stack usage monitoring
 
 Example:
 
@@ -107,35 +107,35 @@ class MyTask : public osapi::Thread {
 
 ---
 
-## 🔒 Mutex Abstraction
+## Mutex Abstraction
 
 ### Standard Mutex
 
-* blocking lock with timeout
-* implemented differently per OS
+- blocking lock with timeout
+- implemented differently per OS
 
 ### Recursive Mutex
 
-* allows multiple locks by same thread
-* implemented for all platforms
+- allows multiple locks by same thread
+- implemented for all platforms
 
 ---
 
-## ☠️ Mortal Thread
+## Mortal Thread
 
 Advanced thread type supporting controlled termination.
 
 Lifecycle:
 
-* `begin()`
-* `loop()`
-* `end()`
+- `begin()`
+- `loop()`
+- `end()`
 
 Supports safe thread shutdown.
 
 ---
 
-## ⏱️ System Time
+## System Time
 
 Unified API:
 
@@ -145,107 +145,67 @@ osapi::getSystemTime();
 
 Mapped internally to:
 
-* FreeRTOS → tick count
-* RTX → kernel tick
-* Windows → system time
+- FreeRTOS → tick count
+- RTX → kernel tick
+- Windows → system time
 
 ---
 
-## 🧰 Technologies
+## Technologies
 
-* C++
-* FreeRTOS
-* CMSIS-RTOS2 (RTX)
-* Windows API
-* Embedded systems
-
----
-
-## 🚀 Features
-
-* multi-RTOS support
-* portable API
-* object-oriented design
-* thread and mutex abstraction
-* desktop simulation capability
-* scalable architecture
+- C++
+- FreeRTOS
+- CMSIS-RTOS2 (RTX)
+- Windows API
+- Embedded systems
 
 ---
 
-## 💻 Desktop Simulation (Windows)
+## Features
+
+- multi-RTOS support
+- portable API
+- object-oriented design
+- thread and mutex abstraction
+- desktop simulation capability
+- scalable architecture
+
+---
+
+## Desktop Simulation (Windows)
 
 The Windows backend allows:
 
-* testing RTOS-like behavior on PC
-* debugging without hardware
-* faster development cycle
+- testing RTOS-like behavior on PC
+- debugging without hardware
+- faster development cycle
 
 ---
 
-## 🔧 How to Use
-
-1. Select OS:
-
-```cpp
-#define OSAPI_USE_FREERTOS
-```
-
-2. Include API:
-
-```cpp
-#include "osapi.h"
-```
-
-3. Create thread:
-
-```cpp
-class MyThread : public osapi::Thread {
-    void job() override {
-        // code
-    }
-};
-```
-
-4. Run:
-
-```cpp
-MyThread t(1, 1024, osapi::JOINABLE);
-t.run();
-```
-
----
-
-## 🧪 Educational Purpose
+## Academic Context
 
 Project created for:
 
 **Operating Systems for Embedded Systems**
 
+at AGH University of Science and Technology.
+
 Topics covered:
 
-* RTOS task management
-* synchronization
-* abstraction layers
-* multi-platform design
+- RTOS task management
+- synchronization
+- abstraction layers
+- multi-platform design
 
 ---
 
-## 🚀 Possible Improvements
+## Possible Improvements
 
-* support for Zephyr / ThreadX
-* unit testing framework
-* performance benchmarks
-* memory optimization
-* documentation generator
-
----
-## 🎓 Academic Context
-
-This project was developed as part of the course:
-
-**Operating Systems for Embedded Systems**
-
-at AGH University of Science and Technology.
+- support for Zephyr / ThreadX
+- unit testing framework
+- performance benchmarks
+- memory optimization
+- documentation generator
 
 ---
 
